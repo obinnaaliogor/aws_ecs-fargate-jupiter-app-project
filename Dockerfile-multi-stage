@@ -9,12 +9,12 @@ RUN yum update -y && \
 WORKDIR /var/www/html
 
 # Download the ZIP file from the GitHub repository
-RUN wget https://github.com/obinnaaliogor/jupiter/archive/refs/heads/main.zip
+RUN wget https://github.com/obinnaaliogor/aws_ecs-fargate-jupiter-app-project.git
 
 # Extract the downloaded ZIP file contents and clean up unnecessary files
 RUN unzip main.zip && \
-    mv jupiter-main/* . && \
-    rm -rf jupiter-main main.zip
+    mv -r aws_ecs-fargate-jupiter-app-project-main/* . && \
+    rm -rf  aws_ecs-fargate-jupiter-app-project-main main.zip README.md Dockerfile-multi-stage Dockerfile LICENSE
 
 
 # Stage 2: Production stage with the official httpd image

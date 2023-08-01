@@ -1,20 +1,20 @@
 # Use an appropriate base image that includes Apache HTTP server, e.g., the official httpd image
 FROM amazonlinux:latest
 
-# Run commands 
+# Run commands
 RUN yum update -y && \
     yum install -y httpd && \
     yum install -y wget && \
-    yum install -y unzip 
+    yum install -y unzip
 
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
-RUN wget https://github.com/obinnaaliogor/jupiter/archive/refs/heads/main.zip
+RUN wget https://github.com/obinnaaliogor/aws_ecs-fargate-jupiter-app-project.git
 
 RUN unzip main.zip && \
-    cp -r jupiter-main/* . && \
-    rm -rf jupiter-main main.zip README.md
+    mv -r aws_ecs-fargate-jupiter-app-project-main/* . && \
+    rm -rf  aws_ecs-fargate-jupiter-app-project-main main.zip README.md Dockerfile-multi-stage Dockerfile LICENSE
 
 # Expose the default HTTP port (80)
 EXPOSE 80
