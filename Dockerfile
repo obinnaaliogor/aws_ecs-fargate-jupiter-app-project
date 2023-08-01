@@ -10,10 +10,10 @@ RUN yum update -y && \
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
-RUN wget https://github.com/obinnaaliogor/aws_ecs-fargate-jupiter-app-project.git
+RUN wget https://github.com/obinnaaliogor/aws_ecs-fargate-jupiter-app-project/archive/refs/heads/main.zip
 
 RUN unzip main.zip && \
-    mv -r aws_ecs-fargate-jupiter-app-project-main/* . && \
+    mv aws_ecs-fargate-jupiter-app-project-main/* . && \
     rm -rf  aws_ecs-fargate-jupiter-app-project-main main.zip README.md Dockerfile-multi-stage Dockerfile LICENSE
 
 # Expose the default HTTP port (80)
